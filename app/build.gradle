@@ -1,0 +1,89 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion(30)
+    buildToolsVersion("30.0.3")
+
+    defaultConfig {
+        applicationId "com.arad.aview"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    //Main
+    implementation deps.main.kotlin_version
+    implementation deps.main.androidx_core
+    implementation deps.main.appcompat
+    implementation deps.main.material
+    implementation deps.main.constraintlayout
+    testImplementation deps.main.junit
+    androidTestImplementation deps.main.test_junit
+    androidTestImplementation deps.main.test_espresso
+
+    //Lifecycle
+    implementation deps.lifecycle.viewmodel
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.livedata
+
+    //Coroutines
+    implementation deps.coroutines.android
+    implementation deps.coroutines.core
+
+    //Dagger_Hilt
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
+    implementation deps.hilt.hilt_viewmodel
+    kapt deps.hilt.hilt_compiler
+
+    //Navigation
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
+
+    //Activity
+    implementation deps.activity.ktx
+
+    //Util
+    implementation deps.util.swiperefreshlayout
+    implementation deps.util.sdp
+    implementation deps.util.lottie
+
+}
+
+kapt {
+    javacOptions {
+        // These options are normally set automatically via the Hilt Gradle plugin, but we
+        // set them manually to workaround a bug in the Kotlin 1.5.20
+        option("-Adagger.fastInit=ENABLED")
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+    }
+}

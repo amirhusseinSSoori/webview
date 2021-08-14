@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">A View</string>
+    <string name="poor_connection">خطا در اتصال به اینترنت...</string>
+    <string name="poor_connection2">تلاش مجدد</string>
+</resources>
