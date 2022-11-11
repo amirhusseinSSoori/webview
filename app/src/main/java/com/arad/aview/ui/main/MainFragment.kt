@@ -2,6 +2,7 @@ package com.arad.aview.ui.main
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,6 +25,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         onObserve()
         onCustomBackPressed()
+
+
+
+
 
     }
 

@@ -18,8 +18,9 @@ class MainBinding @Inject constructor(val ctx: Context) : BindingDetails {
 
     // username : appadmin
     //passworld  : afagh246
-   var baseUrl = "https://www.aparat.com/"
+   var baseUrl = "https://pharoma.ir/"
     override fun webView(bind: FragmentMainBinding) {
+
         bind.web.apply {
             webSettings = settings
             webSettings.javaScriptEnabled = true
@@ -31,7 +32,7 @@ class MainBinding @Inject constructor(val ctx: Context) : BindingDetails {
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView, newProgress: Int) {
                     bind.apply {
-                        prg.isVisible = newProgress != 100
+//                        prg.isVisible = newProgress != 100
                     }
                 }
             }
@@ -45,6 +46,8 @@ class MainBinding @Inject constructor(val ctx: Context) : BindingDetails {
                 ctx.startActivity(i)
             }
         }
+
+        bind.web.callOnClick()
     }
 
     override fun refresh(bind: FragmentMainBinding) {

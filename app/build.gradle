@@ -58,7 +58,7 @@ dependencies {
     //Coroutines
     implementation deps.coroutines.android
     implementation deps.coroutines.core
-
+    implementation 'com.github.lzyzsd:jsbridge:1.0.4'
     //Dagger_Hilt
     implementation deps.hilt.android
     kapt deps.hilt.compiler
@@ -75,7 +75,9 @@ dependencies {
     //Util
     implementation deps.util.swiperefreshlayout
     implementation deps.util.sdp
-    implementation deps.util.lottie
+    //implementation deps.util.lottie
+
+
 
 }
 
