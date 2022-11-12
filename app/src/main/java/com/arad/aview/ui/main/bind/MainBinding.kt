@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -32,12 +33,13 @@ class MainBinding @Inject constructor(val ctx: Context) : BindingDetails {
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView, newProgress: Int) {
                     bind.apply {
-//                        prg.isVisible = newProgress != 100
+                       prg.isVisible = newProgress != 100
                     }
                 }
             }
             webViewClient = CallBack(ctx)
             loadUrl(baseUrl)
+
 
 
             setDownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
@@ -47,6 +49,9 @@ class MainBinding @Inject constructor(val ctx: Context) : BindingDetails {
             }
         }
 
+        bind.web.evaluateJavascript("", ValueCallback {
+            
+        })
         bind.web.callOnClick()
     }
 
