@@ -8,7 +8,9 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.webkit.*
+import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -36,8 +38,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         onObserve()
         onCustomBackPressed()
 
@@ -68,10 +68,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
-//        binding.web.setWebViewClient(WebClientListener(ctx))
+
         binding.web.setWebViewClient(xWebViewClient())
 
       binding.web.setWebChromeClient(object : WebChromeClient() {
+          override fun onProgressChanged(view: WebView?, newProgress: Int) {
+              super.onProgressChanged(view, newProgress)
+              binding.prg.isVisible = newProgress != 100
+          }
               // For 3.0+ Devices (Start)
               // onActivityResult attached before constructor
               protected fun openFileChooser(uploadMsg: ValueCallback<Uri>, acceptType: String?) {
@@ -212,11 +216,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
-    private class xWebViewClient : WebViewClient() {
+    private class xWebViewClient() : WebViewClient() {
+
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             view.loadUrl(url)
             return true
         }
+
+
     }
 
 }
