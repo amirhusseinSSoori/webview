@@ -119,6 +119,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                   acceptType: String?,
                   capture: String?
               ) {
+                  
                   mUploadMessage = uploadMsg
                   val intent = Intent(Intent.ACTION_GET_CONTENT)
                   intent.addCategory(Intent.CATEGORY_OPENABLE)
