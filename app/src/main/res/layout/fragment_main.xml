@@ -36,6 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:indeterminate="true"
+        android:visibility="gone"
         android:indeterminateTintMode="src_atop"
         android:indeterminateTint="@color/purple_700"/>
 
