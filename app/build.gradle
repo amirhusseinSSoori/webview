@@ -8,7 +8,7 @@ plugins {
 
 android {
     compileSdkVersion(33)
-    
+
     defaultConfig {
         applicationId "com.hsa.pharoma"
         minSdkVersion 21
