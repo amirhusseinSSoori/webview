@@ -1,8 +1,8 @@
 ext.deps = [:]
 def versions = [:]
 
-versions.gradle = '7.0.0'
-versions.gradle_plugin = '2.37'
+versions.gradle = '7.4.2'
+versions.gradle_plugin = '2.40.1'
 
 versions.main_kotlin_version = '1.5.21'
 versions.main_androidx_core = '1.6.0'
@@ -21,7 +21,7 @@ versions.hilt_viewmodel = '1.0.0-alpha03'
 versions.hilt_compose = '1.0.0-alpha03'
 versions.hilt_compiler = '1.0.0'
 
-versions.navigation = '2.3.5'
+versions.navigation = '2.4.1'
 
 versions.activity = '1.3.0'
 

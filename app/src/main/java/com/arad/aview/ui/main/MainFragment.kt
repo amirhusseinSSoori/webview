@@ -7,14 +7,18 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.webkit.*
-import android.widget.ProgressBar
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.arad.aview.MainActivity
 import com.arad.aview.R
 import com.arad.aview.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -218,12 +222,20 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private class xWebViewClient() : WebViewClient() {
+        override fun shouldOverrideUrlLoading(
+            view: WebView?,
+            request: WebResourceRequest?
+        ): Boolean {
+            if (java.lang.String.valueOf(request!!.url).contains("external=true")) {
+                val intent = Intent(Intent.ACTION_VIEW, request.url)
+                view!!.context.startActivity(intent)
+                return true
+            } else {
+                view!!.loadUrl(java.lang.String.valueOf(request.url))
+            }
 
-        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-            view.loadUrl(url)
             return true
         }
-
 
     }
 
